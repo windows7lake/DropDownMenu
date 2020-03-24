@@ -17,12 +17,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 public class MainActivity extends AppCompatActivity {
 
-    @InjectView(R.id.dropDownMenu) DropDownMenu mDropDownMenu;
+    DropDownMenu mDropDownMenu;
     private String headers[] = {"城市", "年龄", "性别", "星座"};
     private List<View> popupViews = new ArrayList<>();
 
@@ -34,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     private String citys[] = {"不限", "武汉", "北京", "上海", "成都", "广州", "深圳", "重庆", "天津", "西安", "南京", "杭州"};
     private String ages[] = {"不限", "18岁以下", "18-22岁", "23-26岁", "27-35岁", "35岁以上"};
     private String sexs[] = {"不限", "男", "女"};
-    private String constellations[] = {"不限", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"};
+    private String constellations[] = {"风格不限", "白羊座", "金牛座", "双子座", "巨蟹座", "狮子座", "处女座", "天秤座", "天蝎座", "射手座", "摩羯座", "水瓶座", "双鱼座"};
 
     private int constellationPosition = 0;
 
@@ -42,11 +39,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.inject(this);
         initView();
     }
 
     private void initView() {
+        mDropDownMenu = findViewById(R.id.dropDownMenu);
+
         //init city menu
         final ListView cityView = new ListView(this);
         cityAdapter = new GirdDropDownAdapter(this, Arrays.asList(citys));
@@ -67,10 +65,10 @@ public class MainActivity extends AppCompatActivity {
 
         //init constellation
         final View constellationView = getLayoutInflater().inflate(R.layout.custom_layout, null);
-        GridView constellation = ButterKnife.findById(constellationView, R.id.constellation);
+        GridView constellation = constellationView.findViewById(R.id.constellation);
         constellationAdapter = new ConstellationAdapter(this, Arrays.asList(constellations));
         constellation.setAdapter(constellationAdapter);
-        TextView ok = ButterKnife.findById(constellationView, R.id.ok);
+        TextView ok = constellationView.findViewById(R.id.ok);
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
