@@ -47,6 +47,11 @@ public class DropDownMenu extends LinearLayout {
     // tab高度
     private int popWindowHeight = 50;
 
+    // tab padding left
+    private int menuPaddingLeft;
+    // tab padding right
+    private int menuPaddingRight;
+
     // tab选中图标
     private int menuSelectedIcon;
     // tab未选中图标
@@ -78,6 +83,8 @@ public class DropDownMenu extends LinearLayout {
         menuBackgroundColor = a.getColor(R.styleable.DropDownMenu_ddmenuBackgroundColor, menuBackgroundColor);
         maskColor = a.getColor(R.styleable.DropDownMenu_ddmaskColor, maskColor);
         menuTextSize = a.getDimensionPixelSize(R.styleable.DropDownMenu_ddmenuTextSize, menuTextSize);
+        menuPaddingLeft = a.getDimensionPixelSize(R.styleable.DropDownMenu_ddmenuPaddingLeft, dpTpPx(5));
+        menuPaddingRight = a.getDimensionPixelSize(R.styleable.DropDownMenu_ddmenuPaddingRight, dpTpPx(5));
         menuSelectedIcon = a.getResourceId(R.styleable.DropDownMenu_ddmenuSelectedIcon, menuSelectedIcon);
         menuUnselectedIcon = a.getResourceId(R.styleable.DropDownMenu_ddmenuUnselectedIcon, menuUnselectedIcon);
         popWindowHeight = a.getDimensionPixelSize(R.styleable.DropDownMenu_ddpopWindowHeight, DeviceUtils.getScreenSize(getContext()).y);
@@ -161,7 +168,7 @@ public class DropDownMenu extends LinearLayout {
         tab.setTextColor(textUnselectedColor);
         tab.setCompoundDrawablesWithIntrinsicBounds(null, null, getResources().getDrawable(menuUnselectedIcon), null);
         tab.setText(tabTexts.get(index));
-        tab.setPadding(dpTpPx(5), dpTpPx(12), dpTpPx(5), dpTpPx(12));
+        tab.setPadding(menuPaddingLeft, dpTpPx(12), menuPaddingRight, dpTpPx(12));
         // 添加点击事件
         tab.setOnClickListener(new OnClickListener() {
             @Override

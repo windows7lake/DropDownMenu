@@ -12,5 +12,7 @@
         <attr name="ddmenuSelectedIcon" format="reference" />
         <attr name="ddmenuUnselectedIcon" format="reference" />
         <attr name="ddpopWindowHeight" format="dimension" />
+        <attr name="ddmenuPaddingLeft" format="dimension" />
+        <attr name="ddmenuPaddingRight" format="dimension" />
     </declare-styleable>
 </resources>

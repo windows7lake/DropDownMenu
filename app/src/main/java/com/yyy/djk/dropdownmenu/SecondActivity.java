@@ -20,7 +20,7 @@ public class SecondActivity extends AppCompatActivity {
     TextView textView;
 
     private String[] headers = {"地區不限", "预算不限", "風格不限"};
-    private Integer[] weights = {2, 3, 3};
+    private Integer[] weights = {1, 1, 1};
     private List<View> popupViews = new ArrayList<>();
 
     private GridDropDownAdapter locationAdapter;
@@ -84,7 +84,7 @@ public class SecondActivity extends AppCompatActivity {
         });
         budgetGridView.setOnItemClickListener((adapterView, view, position, id) -> {
             budgetAdapter.setCheckItem(position);
-            mDropDownMenu.setTabText(position == 0 ? headers[1] : "预算" + budgets[position]);
+            mDropDownMenu.setTabText(position == 0 ? headers[1] : budgets[position]);
             mDropDownMenu.closeMenu();
         });
         styleGridView.setOnItemClickListener((adapterView, view, position, id) -> {
